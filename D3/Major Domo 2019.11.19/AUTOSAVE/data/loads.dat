@@ -1,0 +1,102 @@
+File Version	v3.03.00
+Modified Date	11/26/2019
+Modified Time	16:41:14
+
+LoadID	LoadName	RoomID	DIM_setting	Ramp_time	Upper_limit	Lower_limit	TotalWattage
+20	L-002 Wall Sconce DW-L20	2	True	500	100	1	170
+21	L-048 2 inch Down Lights RD3	1	True	500	100	1	50
+22	L-004 Tapelight LED SS14	9	True	500	100	1	50
+23	L-005 Recessed LED SS10	9	True	500	100	1	50
+24	L-006 Table Lamp DT-L08	8	True	500	100	1	50
+25	L-007 Tapelight LED SS15	8	True	500	100	1	50
+26	L-008 Banquet Back Uplight SS11	8	True	500	100	1	50
+28	L-009 LED Accent Panels SS17	8	True	500	100	1	50
+29	L-014-1 LED Accent Panels SS17	1	True	500	100	1	50
+30	L-087 4 inch Down Light RA4	8	True	500	100	1	50
+31	L-001 Wall Sconce DW-L18	9	True	500	100	1	50
+32	L-003 Wall Sconce DW-L18	9	True	500	100	1	50
+33	L-056 4 inch Down Light RA4	3	True	500	100	1	50
+34	L-088 Decorative Pendant DW-L17	2	True	500	100	1	50
+35	L-014-2 LED Accent Panels SS17	1	True	500	100	1	50
+36	L-012 Banquet Back Uplights SS11	11	True	500	100	1	50
+37	L-013 Tapelight  LED  SS5	1	True	500	100	1	50
+38	L-015 Tapelight LED SS6	1	True	500	100	1	50
+39	L-016 Table Lamp DT-L02	1	True	500	100	1	50
+40	L-018 Tapelight LED SS4	1	True	500	100	1	50
+41	L-017-2 Tapelight LED SS8	1	True	500	100	1	50
+42	L-019-1 Tapelight LED SS8	7	True	500	100	1	50
+43	L-017-1 Recessed Tapelight SS13	1	True	500	100	1	50
+44	L-019-2 Tapelight LED 135 SS6	12	True	500	100	1	50
+47	L-022 Decorative Wall Sconce DW-L05	3	True	500	100	1	50
+48	L-024 Tapelight LED SS2	3	True	500	100	1	50
+49	L-025 Banquet Back Uplight SS11	3	True	500	100	1	50
+50	L-026 Tapelight LED SS8	3	True	500	100	1	50
+51	L-027 Banquet Back Uplight SS16	2	True	500	100	1	50
+52	L-029 Tapelight LED SS2	2	True	500	100	1	50
+53	L-030 Tapelight LED SS8	2	True	500	100	1	50
+54	L-032-1 Banquet Back Uplight  SS11	-1	True	500	100	1	50
+55	L-032-2 Tapelight LED SS9	-1	True	500	100	1	50
+56	L-034 Tapelight LED 127 SS5	-1	True	500	100	1	50
+57	L-037 Tapelight LED SS8	5	True	500	100	1	50
+58	L-038-1 Banquet Back Uplight SS11	5	True	500	100	1	50
+59	L-038-2 Tapelight LED SS8	4	True	500	100	1	50
+60	L-040 Banquet Back Uplight SS11	3	True	500	100	1	50
+61	L-041 Tapelight LED SS8	3	True	500	100	1	50
+62	L-085 Tapelight LED SS5	11	True	500	100	1	50
+63	L-089 Decorative Wall Sconce DW-L16	2	True	500	100	1	50
+64	L-054 Pendant Light DP-L06	3	True	500	100	1	50
+65	L-090 Tapelight LED SS6	6	True	500	100	1	50
+66	L-060 Tapelight LED SS12	2	True	500	100	1	50
+67	L-067 Tapelight LED SS1	8	True	500	100	1	50
+68	L-071 Decorative Pendant DP-L09	-1	True	500	100	1	50
+69	L-045 DMX 102 TM	11	True	500	100	1	50
+70	L-046 Main Down Lights 102 ED1	11	True	500	100	1	50
+71	L-047 Chandelier 102 DP-L01	11	True	500	100	1	50
+72	L-049 4 inch Down Light RA1	1	True	500	100	1	50
+73	L-050 4 inch Down Light RA1	12	True	500	100	1	50
+74	L-051 4 inch Down Light RA2	12	True	500	100	1	50
+75	L-036 Decorative Wall Sconce DW-L21	4	True	500	100	1	50
+76	L-084 4 inch Down Light RA4	8	True	500	100	1	50
+77	L-052-1 Down Light ED1	3	True	500	100	1	50
+78	L-059 Decorative Pendant DP-L07	3	True	500	100	1	50
+79	L-063 4 inch Down Light RA5	2	True	500	100	1	50
+80	L-064 4 inch Down Light RA1	2	True	500	100	1	50
+81	L-065 2 inch Trackhead TH2	2	True	500	100	1	50
+82	L-066 4 inch Down LightRA5	2	True	500	100	1	50
+83	L-068 4 inch Down Light RD2	6	True	500	100	1	50
+84	L-069 4 inch Down Light RD2	6	True	500	100	1	50
+85	L-072 4 inch Down LightRA1	-1	True	500	100	1	50
+86	L-052-2 Down Light ED1	3	True	500	100	1	50
+87	L-052-3 Down Light ED1	3	True	500	100	1	50
+88	L-053 Down Light ED2	3	True	500	100	1	50
+89	L-055 Down Light ED2	3	True	500	100	1	50
+90	L-057 DINING RM 1 #100 ED3	3	True	500	100	1	50
+91	L-058 4 inch Down Light RA4	7	True	500	100	1	50
+92	L-061 4 inch Monopoint Down TH3	2	True	500	100	1	50
+93	L-073-1 4 inch Trackhead TH1	10	True	500	100	1	50
+94	L-078 Down Light ED1	5	True	500	100	1	50
+95	L-082 Down Light ED2	5	True	500	100	1	50
+96	L-020 Decorative Wall Sconce DW-L13	8	True	500	100	1	50
+97	L-021  Decorative Wall Sconce DW-L13	8	True	500	100	1	50
+98	L-031 Decorative Wall Sconce DW-L13	8	True	500	100	1	50
+99	L-042 Decorative Wall Sconce DW-L13	8	True	500	100	1	50
+102	L-073-2 4 inch Trackhead TH1	10	True	500	100	1	50
+103	L-073-3 4 inch Trackhead TH1	10	True	500	100	1	50
+104	L-073-4 4 inch Trackhead TH1	10	True	500	100	1	50
+105	L-074-1 4 inch Trackhead TH1	7	True	500	100	1	50
+106	L-074-2 4 inch Trackhead TH1	7	True	500	100	1	50
+107	L-074-3 4 inch Trackhead TH1	7	True	500	100	1	50
+108	L-074-4 4 inch Trackhead TH1	7	True	500	100	1	50
+109	L-076-1 Down Light ED1	4	True	500	100	1	50
+110	L-076-2 Down Light ED1	4	True	500	100	1	50
+111	L-077 Down Light ED1	4	True	500	100	1	50
+112	L-079 Down Light ED2	5	True	500	100	1	50
+113	L-080 Down Light ED1	5	True	500	100	1	50
+114	L-081 4 inch Down Light RA1	5	True	500	100	1	50
+115	L-075 4 inch Down Light RD1	4	True	500	100	1	50
+116	L-083 Tapelight LED SS1	8	True	500	100	1	50
+117	L-035-1 Tapelight LED SS3	4	True	500	100	1	50
+118	L-035-2 Tapelight LED SS3	4	True	500	100	1	50
+119	L-037-1 Tapelight LED SS3	4	True	500	100	1	50
+120	L-037-2 Tapelight LED SS3	4	True	500	100	1	50
+

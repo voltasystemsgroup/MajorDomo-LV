@@ -1,0 +1,48 @@
+File Version	v3.03.00
+Modified Date	12/27/2019
+Modified Time	15:06:35
+
+SceneID	RoomID	SceneName
+1	256	Night Scene
+2	1	All On
+4	1	All Off
+6	1	Day
+7	1	Night
+8	1	Scene 3
+10	3	All Off
+11	4	All Off
+12	5	All Off
+14	2	All Off
+15	6	All Off
+20	3	All On
+21	4	All On
+22	5	All On
+24	2	All On
+25	6	All On
+31	3	Day
+32	4	Day
+33	5	Day
+35	2	Day
+36	6	Day
+42	3	Night
+43	4	Night
+44	5	Night
+46	2	Night
+47	6	Night
+53	3	Scene 3
+54	4	Scene 3
+55	5	Scene 3
+57	2	Scene 3
+58	6	Scene 3
+62	-1	All On
+64	-1	Day
+65	-1	Night
+66	-1	Scene 3
+63	-1	All Off
+67	256	Day Scene
+3	14	All Off
+5	14	All On
+9	14	Day
+13	14	Night
+16	14	Scene 3
+

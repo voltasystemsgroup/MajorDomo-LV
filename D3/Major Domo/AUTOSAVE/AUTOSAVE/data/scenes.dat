@@ -1,0 +1,34 @@
+File Version	v3.03.00
+Modified Date	11/18/2019
+Modified Time	13:43:10
+
+SceneID	RoomID	SceneName
+1	256	All Lights
+2	1	All On
+4	1	All Off
+5	11	All On
+6	1	Scene 1
+7	1	Scene 2
+8	1	Scene 3
+3	11	All Off
+9	8	All Off
+10	3	All Off
+11	4	All Off
+12	5	All Off
+13	9	All Off
+14	2	All Off
+15	6	All Off
+16	12	All Off
+17	10	All Off
+18	7	All Off
+19	8	All On
+20	3	All On
+21	4	All On
+22	5	All On
+23	9	All On
+24	2	All On
+25	6	All On
+26	12	All On
+27	10	All On
+28	7	All On
+

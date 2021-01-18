@@ -1,0 +1,93 @@
+File Version	v3.03.00
+Modified Date	12/27/2019
+Modified Time	15:06:35
+
+LoadID	LoadName	RoomID	DIM_setting	Ramp_time	Upper_limit	Lower_limit	TotalWattage
+74	Down Main 02	1	True	500	100	0	50
+75	Sconces	4	True	500	100	1	50
+76	Bathroom Hall	5	True	500	100	0	50
+77	Down Main 01	3	True	500	100	1	50
+78	Chandelier Private Room	3	True	500	100	1	50
+79	Down Seating	2	True	500	100	0	50
+80	Down Main	2	True	500	100	0	50
+81	Track Lights	2	True	500	100	1	50
+82	Down Stage	2	True	500	100	0	50
+83	BOH 01	6	True	500	100	1	50
+84	BOH 02	6	True	500	100	1	50
+86	Down Main 02	3	True	500	100	1	50
+87	Down Main 03	3	True	500	100	1	50
+88	Down Perimeter 02	3	True	500	100	1	50
+89	Down Perimeter 01	3	True	500	100	1	50
+90	Down Private Room	3	True	500	100	0	50
+91	Bathroom Hall	3	True	500	100	0	50
+92	Spot Lights	2	True	500	100	0	50
+93	BOH Hall 01	6	True	500	100	1	50
+94	Down Main 01	5	True	500	100	1	50
+95	Down Main 02	14	True	500	100	1	50
+96	Bathroom Sconce 01	3	True	500	100	0	50
+97	Bathroom Sconces 02	3	True	500	100	0	50
+98	Bathroom Sconce	2	True	500	100	0	50
+99	Bathroom Sconces	5	True	500	100	0	50
+102	BOH Hall 02	6	True	500	100	1	50
+103	BOH Hall 03	6	True	500	100	1	50
+104	BOH Hall 04	6	True	500	100	1	50
+105	BOH Hall 05	6	True	500	100	1	50
+106	BOH Hall 06	6	True	500	100	1	50
+107	BOH Hall 07	6	True	500	100	1	50
+108	BOH Hall 08	6	True	500	100	1	50
+109	Down Main 03	4	True	500	100	1	50
+110	Down Main 02	4	True	500	100	1	50
+111	Down Main 01	4	True	500	100	1	50
+112	Down Main 02	5	True	500	100	1	50
+113	Down Main 01	14	True	500	100	1	50
+114	Down Main Table	14	True	500	100	0	50
+116	Bathroom Up Lights	5	True	500	100	1	50
+117	Wine Rack 02	4	True	500	100	0	50
+118	P.O.S. Station	4	True	500	100	1	50
+119	Wine Rack 01	4	True	500	100	0	50
+145	Bottle Steps	1	True	500	100	1	50
+146	Service Entry Light	6	True	500	100	1	100
+20	Sconces	-1	True	500	100	1	170
+21	Down Bar Top	1	True	500	100	1	50
+23	Entrance LED's	3	True	500	100	1	50
+24	Host Table lamp	3	True	500	100	1	50
+25	Host Down Light	3	True	500	100	1	50
+28	Light Panels Above Meat	3	True	500	100	0	50
+29	Light Panels Above Bar 01	1	True	500	100	0	50
+30	Bathroom Down	3	True	500	100	0	50
+32	Sconces Entrance	3	True	500	100	1	50
+34	Chandelier	2	True	500	100	1	50
+35	Light Panels Above Bar 02	1	True	500	100	1	50
+37	Bar Seating	1	True	500	100	1	50
+38	Bar Task Lights	1	True	500	100	1	50
+39	Bar Top Lamps	1	True	500	100	1	50
+41	P.O.S. Bar Counter	1	True	500	100	1	50
+42	L-019-1 Tapelight LED SS8	2	True	500	100	1	50
+43	Display Case	1	True	500	100	1	50
+44	P.O.S. Station 02	3	True	500	100	1	50
+47	Wall Sconces	3	True	500	100	1	50
+48	Booth Floor Lights	3	True	500	100	1	50
+49	Booth Up Lights	3	True	500	100	1	50
+50	P.O.S. Station 01	3	True	500	100	1	50
+51	Stage Floor Light	2	True	500	100	1	50
+52	Bar Up Lights 02	-1	True	500	100	1	50
+53	P.O.S. Station	2	True	500	100	1	50
+55	Bar Up Light 01	-1	True	500	100	1	50
+56	Bar Task Light	-1	True	500	100	1	50
+57	P.O.S. Station	5	True	500	100	1	50
+58	Art Up Light	5	True	500	100	1	50
+62	Lounge Counter LED's	3	True	500	100	1	50
+63	Sconces	2	True	500	100	1	50
+64	Booth Domes	3	True	500	100	1	50
+65	Art Private Room	3	True	500	100	0	50
+66	Stage Accents	2	True	500	100	1	50
+67	Bathroom Down Light	2	True	500	100	1	50
+68	Bar Top	-1	True	500	100	1	50
+69	Event Lights	3	False	500	100	1	50
+70	Down Main 04	3	True	500	100	1	50
+71	Chandelier Lounge	3	True	500	100	0	50
+72	Down Main 01	1	True	500	100	0	50
+73	Down Main 03	1	True	500	100	0	50
+152	P.O.S Station	14	True	500	100	1	50
+154	Booth Up Light	14	True	500	100	1	50
+

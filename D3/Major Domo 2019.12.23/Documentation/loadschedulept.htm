@@ -1,0 +1,1906 @@
+<html>
+	<head>
+		<title>Load Schedule w/ Panel Terminations</title>
+		<style type="text/css">
+			<!--
+              body.default		{ font-family: Arial, Helvetica;
+              font-size: 10pt }
+
+              table.default		{ font-family: Arial, Helvetica;
+              border-collapse: collapse;
+              empty-cells: show;
+              table-layout: fixed;
+              font-size: 8.0pt}
+
+              table.module		{ font-family: Arial, Helvetica;
+              font-size: 8.5pt;
+              border-collapse: collapse;
+              empty-cells: show;
+              table-layout: fixed }
+
+              table.page		    { page-break-after: always }
+
+              table.encl_view		{ border: 1pt solid black;
+              background: #FFFFCC;
+              font-size: 6pt;
+              table-layout: fixed }
+
+              table.header        { font-family:Arial, Helvetica;
+              font-size: 10pt;
+              border-collapse:collapse;
+              width:100%;
+              empty-cells: show;
+              margin-bottom: 0.05in;
+              cell-padding:0.01in }
+
+
+              table.header_title        { font-family:Arial, Helvetica;
+              font-size: 10pt;
+              border-collapse:collapse;
+              width:100%;
+              empty-cells: show;
+              margin-bottom: 0.01in;
+              cell-padding:0.01in }
+
+
+              tr.titleblock		{ font-weight: normal; font-size: 10pt;
+              vertical-align: top }
+
+              tr.pageseparate		{ background: rgb(214,214,214);
+              vertical-align: center;
+              height: 0.3in }
+
+              tr.circuit		    { height: 0.25in }
+
+              tr.encl_row		    { spacing: 5px }
+
+              td.reporttitle		{ font-weight: bold; font-size: 12pt }
+
+              td.titlebottom		{ border-bottom: 0.05in solid rgb(170,170,170) }
+
+              td.titletop		    { border-top: 0.05in solid rgb(170,170,170) }
+
+              td.pagetitle		{ font-size: 10pt;
+              border-top: 0.01in solid black;
+              border-bottom: 0.01in solid black }
+
+              td.modulename		{ font-weight: bold; font-size: 9pt;
+              padding-bottom: 2px }
+
+              td.hot   			{ background: black;
+              font-weight: bold;
+              color: white;
+              border: 1pt solid black }
+
+              td.ckt_loc	    	{ padding-right: 7px;
+              padding-left: 7px }
+
+
+              td.ckt_red		    { background: rgb(214, 82, 87);
+              color: black;
+              border: 1pt solid black }
+
+              td.ckt_blue		    { background: rgb(106, 162, 219);
+              color: black;
+              border: 1pt solid black }
+
+              td.ckt_white		{ background: #FFFFFFF;
+              color: black;
+              border: 1pt solid black }
+
+              td.feedseparate     { background: rgb(212,208,172);
+              border: 1pt solid black }
+
+              td.ckt_type		    {  }
+
+              td.ckt_color		{  }
+
+              td.bar			    { background: black;
+              border: 1pt solid black }
+
+              td.encl	 		    { padding-top: 20pt;
+              padding-left: 10pt;
+              width: 60px }
+
+              td.encl_cur		    { background: rgb(214,214,214);
+              border: 2pt solid black;
+              font-weight: bold;
+              width: 15px;
+              height: 25px }
+
+              td.encl_cell		{ background: white;
+              border: 1pt solid black;
+              width: 15px;
+              height: 25px }
+
+              img.arr_tail		{ width: 7;
+              height: 1 }
+
+              img.arr_front		{ width: 7;
+              height: 1 }
+
+              img.arr_head		{ width: 5;
+              height: 5 }
+
+              div.encl_name		{ font-size: 8pt;
+              text-align: center }
+
+              table.mod_data		{ border-collapse: collapse;
+              empty-cells: show;
+              table-layout: fixed;
+              font-size: 9.5pt;
+              page-break-after: always }
+
+              td.mod_data_lt		{ text-align: left;
+              padding: 0pt;
+              border-right: 1.5pt solid black;
+              height: 80px }
+
+              td.mod_data_rt		{ text-align: right;
+              padding: 0pt;
+              border-left: 1.5pt solid black;
+              height: 80px }
+
+              td.fix_img_lt		{ background: rgb(250,250,250) }
+
+              td.fix_img_rt		{ background: rgb(250,250,250) }
+
+              td.mod_img		    { background: rgb(250,250,250) }
+
+              td.no_inst		    { background: rgb(250,250,250);
+              border: 1pt dashed gray;
+              font-weight: bold; font-size: 8.5pt;
+              height: 80px }
+
+              td.ref_fix_lt		{ background: rgb(250,250,250);
+              border-left: 1.5pt solid black;
+              border-top: 1.5pt solid black;
+              width: 80px }
+
+              td.ref_fix_rt		{ background: rgb(250,250,250);
+              border-right: 1.5pt solid black;
+              border-top: 1.5pt solid black;
+              width: 80px }
+
+              td.ref_dev		    { background: rgb(250,250,250);
+              border-top: 1.5pt solid black;
+              width: 80px }
+
+              td.ref_mod_data		{ width: 120px }
+
+              img.mod_img		    { width: 84px }
+
+              div.mod_name		{ background: black;
+              color: white;
+              border-bottom: 2pt solid black }
+
+              img.device		    { border: 0pt }
+
+              tr.header		    { font-weight: bold }
+
+              tr.r0			    { background-color: rgb(232,232,232) }
+
+              tr.r1			    { background-color: white }
+
+
+              td.header		    { border-top: 0.5pt solid black;
+              border-bottom: 2.0pt solid black;
+              border-left: 0.5pt solid black;
+              border-right: 0.5pt solid black;
+              background-color:rgb(200,200,200);
+              padding: 2pt
+              }
+
+              td.ld_cell          { border:0.5pt solid black;
+              vertical-align:top;
+              padding: 2pt }
+
+              thead               { display: table-header-group }
+
+              td.bom_req		    { background-color: rgb(232,232,232) }
+              td.bom_cell         { border: 0.5pt solid black;
+              vertical-align: top }
+            -->
+		</style>
+	</head>
+	<body class="default"><table class="header" width="100%"><tr><td colspan="25" rowspan="3"><img width="200" src="logogr.jpg"/></td></tr><tr/><tr/><tr class="titleblock"><td class="titletop" width="100%" colspan="25"><table class="header_title"><tr><td align="right" width="8%"><b>Report: </b></td><td width="92%">Load Schedule w/ Panel Terminations</td></tr></table></td></tr><tr class="titleblock"><td width="8%" align="right"><b>Project: </b></td><td width="32%">Major Domo 2019.12.23</td><td width="13%" align="right"><b>Dealer: </b></td><td width="47%"></td></tr><tr class="titleblock"><td align="right"><b>Creator: </b></td><td>
+                    Crestron D3 Pro v3.03.028</td><td align="right"><b>Description: </b></td><td></td></tr><tr class="titleblock"><td class="titlebottom" align="right"><b>Date: </b></td><td class="titlebottom">12/30/2019</td><td class="titlebottom" align="right"><b>System Number:</b></td><td class="titlebottom"></td></tr></table><br/><br/>
+		<table class="default" width="100%" style="border: 1pt solid black;	table-layout: fixed">
+			<col style="width: 1.30in"/>
+			<col style="width: 0.40in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.55in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.15in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.20in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.25in"/>
+			<thead>
+				<tr class="sectionheader" valign="bottom">
+					<td class="header" align="left"><b>Area / Room / Controlled Ckt Name</b></td>
+					<td class="header" align="left"><b>Controlled Ckt No.</b></td>
+					<td class="header" align="left"><b>Status</b></td>
+					<td class="header" align="left"><b>Fixture</b></td>
+					<td class="header" align="left"><b>Load	Type</b></td>
+					<td class="header" align="left"><b>Fixture Watts</b></td>
+					<td class="header" align="left"><b>Fixture Qty</b></td>
+					<td class="header" align="left"><b>Total Watts</b></td>
+					<td class="header" align="left"><b>Dim</b></td>
+					<td class="header" align="left"><b>On Backup</b></td>
+					<td class="header" align="left"><b>Arc Fault</b></td>
+					<td class="header" align="left"><b>Enclosure</b></td>
+					<td class="header" align="left"><b>Slot</b></td>
+					<td class="header" align="left"><b>Module</b></td>
+					<td class="header" align="left"><b>Output</b></td>
+				</tr>
+			</thead>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Bar 101<b> / </b>Bar Seating</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">3</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">2</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Bar 101<b> / </b>Bar Task Lights</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770B</td>
+				<td class="ld_cell" align="left">5</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">5</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Bar 101<b> / </b>Bar Top Lamps</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">3</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">4</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Bar 101<b> / </b>Bottle Steps</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770B</td>
+				<td class="ld_cell" align="left">5</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">1</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Bar 101<b> / </b>Display Case</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">3</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">5</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Bar 101<b> / </b>Down Bar Top</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">1</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">3</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Bar 101<b> / </b>Down Main 01</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">8</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">4</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Bar 101<b> / </b>Down Main 02</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">8</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">6</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Bar 101<b> / </b>Down Main 03</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">8</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">5</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Bar 101<b> / </b>Light Panels Above Bar 01</td>
+				<td class="ld_cell" align="left">L-014</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">10</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">1</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Bar 101<b> / </b>Light Panels Above Bar 02</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">10</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">8</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Bar 101<b> / </b>P.O.S. Bar Counter</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">3</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">6</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 1<b> / </b>Art Private Room</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">2</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">7</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 1<b> / </b>Bathroom Down</td>
+				<td class="ld_cell" align="left">L-087</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">2</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">1</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 1<b> / </b>Bathroom Hall</td>
+				<td class="ld_cell" align="left">L-058</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">9</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">7</td>
+			</tr>
+			<table class="page"/>
+			<table class="header" width="100%"><tr><td colspan="25" rowspan="3"><img width="200" src="logogr.jpg"/></td></tr><tr/><tr/><tr class="titleblock"><td class="titletop" width="100%" colspan="25"><table class="header_title"><tr><td align="right" width="8%"><b>Report: </b></td><td width="92%">Load Schedule w/ Panel Terminations</td></tr></table></td></tr><tr class="titleblock"><td width="8%" align="right"><b>Project: </b></td><td width="32%">Major Domo 2019.12.23</td><td width="13%" align="right"><b>Dealer: </b></td><td width="47%"></td></tr><tr class="titleblock"><td align="right"><b>Creator: </b></td><td>
+                    Crestron D3 Pro v3.03.028</td><td align="right"><b>Description: </b></td><td></td></tr><tr class="titleblock"><td class="titlebottom" align="right"><b>Date: </b></td><td class="titlebottom">12/30/2019</td><td class="titlebottom" align="right"><b>System Number:</b></td><td class="titlebottom"></td></tr></table><br/><br/>
+			<table class="default" width="100%" style="border: 1pt solid black;	table-layout: fixed"/>
+			<col style="width: 1.30in"/>
+			<col style="width: 0.40in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.55in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.15in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.20in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.25in"/>
+			<tr class="sectionheader" valign="bottom">
+				<td class="header" align="left"><b>Area / Room / Controlled Ckt Name</b></td>
+				<td class="header" align="left"><b>Controlled Ckt No.</b></td>
+				<td class="header" align="left"><b>Status</b></td>
+				<td class="header" align="left"><b>Fixture</b></td>
+				<td class="header" align="left"><b>Load	Type</b></td>
+				<td class="header" align="left"><b>Fixture Watts</b></td>
+				<td class="header" align="left"><b>Fixture Qty</b></td>
+				<td class="header" align="left"><b>Total Watts</b></td>
+				<td class="header" align="left"><b>Dim</b></td>
+				<td class="header" align="left"><b>On Backup</b></td>
+				<td class="header" align="left"><b>Arc Fault</b></td>
+				<td class="header" align="left"><b>Enclosure</b></td>
+				<td class="header" align="left"><b>Slot</b></td>
+				<td class="header" align="left"><b>Module</b></td>
+				<td class="header" align="left"><b>Output</b></td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 1<b> / </b>Bathroom Sconce 01</td>
+				<td class="ld_cell" align="left">L-020</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770B</td>
+				<td class="ld_cell" align="left">2</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">1</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 1<b> / </b>Bathroom Sconces 02</td>
+				<td class="ld_cell" align="left">L-021</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770B</td>
+				<td class="ld_cell" align="left">2</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">3</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 1<b> / </b>Booth Domes</td>
+				<td class="ld_cell" align="left">L-054</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">7</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">3</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 1<b> / </b>Booth Floor Lights</td>
+				<td class="ld_cell" align="left">L-024</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">4</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">5</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 1<b> / </b>Booth Up Lights</td>
+				<td class="ld_cell" align="left">L-025</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">4</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">6</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 1<b> / </b>Chandelier Lounge</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">8</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">3</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 1<b> / </b>Chandelier Private Room</td>
+				<td class="ld_cell" align="left">L-059</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">6</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">7</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 1<b> / </b>Down Main 01</td>
+				<td class="ld_cell" align="left">L-052</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">4</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">2</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 1<b> / </b>Down Main 02</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">4</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">3</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 1<b> / </b>Down Main 03</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">5</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">3</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 1<b> / </b>Down Main 04</td>
+				<td class="ld_cell" align="left">L-046</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">7</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">5</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 1<b> / </b>Down Perimeter 01</td>
+				<td class="ld_cell" align="left">L-055</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">5</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">8</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 1<b> / </b>Down Perimeter 02</td>
+				<td class="ld_cell" align="left">L-053</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">5</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">7</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 1<b> / </b>Down Private Room</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">9</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">6</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 1<b> / </b>Entrance LED's</td>
+				<td class="ld_cell" align="left">L-005</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">1</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">5</td>
+			</tr>
+			<table class="page"/>
+			<table class="header" width="100%"><tr><td colspan="25" rowspan="3"><img width="200" src="logogr.jpg"/></td></tr><tr/><tr/><tr class="titleblock"><td class="titletop" width="100%" colspan="25"><table class="header_title"><tr><td align="right" width="8%"><b>Report: </b></td><td width="92%">Load Schedule w/ Panel Terminations</td></tr></table></td></tr><tr class="titleblock"><td width="8%" align="right"><b>Project: </b></td><td width="32%">Major Domo 2019.12.23</td><td width="13%" align="right"><b>Dealer: </b></td><td width="47%"></td></tr><tr class="titleblock"><td align="right"><b>Creator: </b></td><td>
+                    Crestron D3 Pro v3.03.028</td><td align="right"><b>Description: </b></td><td></td></tr><tr class="titleblock"><td class="titlebottom" align="right"><b>Date: </b></td><td class="titlebottom">12/30/2019</td><td class="titlebottom" align="right"><b>System Number:</b></td><td class="titlebottom"></td></tr></table><br/><br/>
+			<table class="default" width="100%" style="border: 1pt solid black;	table-layout: fixed"/>
+			<col style="width: 1.30in"/>
+			<col style="width: 0.40in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.55in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.15in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.20in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.25in"/>
+			<tr class="sectionheader" valign="bottom">
+				<td class="header" align="left"><b>Area / Room / Controlled Ckt Name</b></td>
+				<td class="header" align="left"><b>Controlled Ckt No.</b></td>
+				<td class="header" align="left"><b>Status</b></td>
+				<td class="header" align="left"><b>Fixture</b></td>
+				<td class="header" align="left"><b>Load	Type</b></td>
+				<td class="header" align="left"><b>Fixture Watts</b></td>
+				<td class="header" align="left"><b>Fixture Qty</b></td>
+				<td class="header" align="left"><b>Total Watts</b></td>
+				<td class="header" align="left"><b>Dim</b></td>
+				<td class="header" align="left"><b>On Backup</b></td>
+				<td class="header" align="left"><b>Arc Fault</b></td>
+				<td class="header" align="left"><b>Enclosure</b></td>
+				<td class="header" align="left"><b>Slot</b></td>
+				<td class="header" align="left"><b>Module</b></td>
+				<td class="header" align="left"><b>Output</b></td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 1<b> / </b>Event Lights</td>
+				<td class="ld_cell" align="left">L-045</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">8</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">1</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 1<b> / </b>Host Down Light</td>
+				<td class="ld_cell" align="left">L-007</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">1</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">7</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 1<b> / </b>Host Table lamp</td>
+				<td class="ld_cell" align="left">L-006</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">1</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">6</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 1<b> / </b>Light Panels Above Meat</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">8</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">2</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 1<b> / </b>Lounge Counter LED's</td>
+				<td class="ld_cell" align="left">L-085</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">6</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">8</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 1<b> / </b>P.O.S. Station 01</td>
+				<td class="ld_cell" align="left">L-026</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">4</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">7</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 1<b> / </b>P.O.S. Station 02</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">3</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">8</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 1<b> / </b>Sconces Entrance</td>
+				<td class="ld_cell" align="left">L-003</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">6</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">1</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 1<b> / </b>Wall Sconces</td>
+				<td class="ld_cell" align="left">L-022</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">4</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">4</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 2<b> / </b>Down Main 01</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770B</td>
+				<td class="ld_cell" align="left">3</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">3</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 2<b> / </b>Down Main 02</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770B</td>
+				<td class="ld_cell" align="left">3</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">2</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 2<b> / </b>Down Main 03</td>
+				<td class="ld_cell" align="left">L-076</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770B</td>
+				<td class="ld_cell" align="left">3</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">1</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 2<b> / </b>P.O.S. Station</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770B</td>
+				<td class="ld_cell" align="left">2</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">6</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 2<b> / </b>Sconces</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">8</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">7</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 2<b> / </b>Wine Rack 01</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770B</td>
+				<td class="ld_cell" align="left">2</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">7</td>
+			</tr>
+			<table class="page"/>
+			<table class="header" width="100%"><tr><td colspan="25" rowspan="3"><img width="200" src="logogr.jpg"/></td></tr><tr/><tr/><tr class="titleblock"><td class="titletop" width="100%" colspan="25"><table class="header_title"><tr><td align="right" width="8%"><b>Report: </b></td><td width="92%">Load Schedule w/ Panel Terminations</td></tr></table></td></tr><tr class="titleblock"><td width="8%" align="right"><b>Project: </b></td><td width="32%">Major Domo 2019.12.23</td><td width="13%" align="right"><b>Dealer: </b></td><td width="47%"></td></tr><tr class="titleblock"><td align="right"><b>Creator: </b></td><td>
+                    Crestron D3 Pro v3.03.028</td><td align="right"><b>Description: </b></td><td></td></tr><tr class="titleblock"><td class="titlebottom" align="right"><b>Date: </b></td><td class="titlebottom">12/30/2019</td><td class="titlebottom" align="right"><b>System Number:</b></td><td class="titlebottom"></td></tr></table><br/><br/>
+			<table class="default" width="100%" style="border: 1pt solid black;	table-layout: fixed"/>
+			<col style="width: 1.30in"/>
+			<col style="width: 0.40in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.55in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.15in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.20in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.25in"/>
+			<tr class="sectionheader" valign="bottom">
+				<td class="header" align="left"><b>Area / Room / Controlled Ckt Name</b></td>
+				<td class="header" align="left"><b>Controlled Ckt No.</b></td>
+				<td class="header" align="left"><b>Status</b></td>
+				<td class="header" align="left"><b>Fixture</b></td>
+				<td class="header" align="left"><b>Load	Type</b></td>
+				<td class="header" align="left"><b>Fixture Watts</b></td>
+				<td class="header" align="left"><b>Fixture Qty</b></td>
+				<td class="header" align="left"><b>Total Watts</b></td>
+				<td class="header" align="left"><b>Dim</b></td>
+				<td class="header" align="left"><b>On Backup</b></td>
+				<td class="header" align="left"><b>Arc Fault</b></td>
+				<td class="header" align="left"><b>Enclosure</b></td>
+				<td class="header" align="left"><b>Slot</b></td>
+				<td class="header" align="left"><b>Module</b></td>
+				<td class="header" align="left"><b>Output</b></td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 2<b> / </b>Wine Rack 02</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770B</td>
+				<td class="ld_cell" align="left">2</td>
+				<td class="ld_cell" align="left">CLX-2DIMU8</td>
+				<td class="ld_cell" align="left">5</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 3<b> / </b>Art Up Light</td>
+				<td class="ld_cell" align="left">L-038</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">6</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">3</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 3<b> / </b>Bathroom Hall</td>
+				<td class="ld_cell" align="left">L-084</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">8</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">8</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 3<b> / </b>Bathroom Sconces</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">1</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">1</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 3<b> / </b>Bathroom Up Lights</td>
+				<td class="ld_cell" align="left">L-083</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770B</td>
+				<td class="ld_cell" align="left">3</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">7</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 3<b> / </b>Down Main 01</td>
+				<td class="ld_cell" align="left">L-078</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770B</td>
+				<td class="ld_cell" align="left">3</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">4</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 3<b> / </b>Down Main 02</td>
+				<td class="ld_cell" align="left">L-079</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770B</td>
+				<td class="ld_cell" align="left">3</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">5</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining RM 3<b> / </b>P.O.S. Station</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">6</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">2</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining Rm 4<b> / </b>Booth Up Light</td>
+				<td class="ld_cell" align="left">L-040</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">6</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">5</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining Rm 4<b> / </b>Down Main 01</td>
+				<td class="ld_cell" align="left">L-080</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770B</td>
+				<td class="ld_cell" align="left">3</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">6</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining Rm 4<b> / </b>Down Main 02</td>
+				<td class="ld_cell" align="left">L-082</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">3</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">3</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining Rm 4<b> / </b>Down Main Table</td>
+				<td class="ld_cell" align="left">L-081</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">9</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">2</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Dining Rm 4<b> / </b>P.O.S Station</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">6</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">6</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Karaoke<b> / </b>Bathroom Down Light</td>
+				<td class="ld_cell" align="left">L-067</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">7</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">6</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Karaoke<b> / </b>Bathroom Sconce</td>
+				<td class="ld_cell" align="left">L-031</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">7</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">8</td>
+			</tr>
+			<table class="page"/>
+			<table class="header" width="100%"><tr><td colspan="25" rowspan="3"><img width="200" src="logogr.jpg"/></td></tr><tr/><tr/><tr class="titleblock"><td class="titletop" width="100%" colspan="25"><table class="header_title"><tr><td align="right" width="8%"><b>Report: </b></td><td width="92%">Load Schedule w/ Panel Terminations</td></tr></table></td></tr><tr class="titleblock"><td width="8%" align="right"><b>Project: </b></td><td width="32%">Major Domo 2019.12.23</td><td width="13%" align="right"><b>Dealer: </b></td><td width="47%"></td></tr><tr class="titleblock"><td align="right"><b>Creator: </b></td><td>
+                    Crestron D3 Pro v3.03.028</td><td align="right"><b>Description: </b></td><td></td></tr><tr class="titleblock"><td class="titlebottom" align="right"><b>Date: </b></td><td class="titlebottom">12/30/2019</td><td class="titlebottom" align="right"><b>System Number:</b></td><td class="titlebottom"></td></tr></table><br/><br/>
+			<table class="default" width="100%" style="border: 1pt solid black;	table-layout: fixed"/>
+			<col style="width: 1.30in"/>
+			<col style="width: 0.40in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.55in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.15in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.20in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.25in"/>
+			<tr class="sectionheader" valign="bottom">
+				<td class="header" align="left"><b>Area / Room / Controlled Ckt Name</b></td>
+				<td class="header" align="left"><b>Controlled Ckt No.</b></td>
+				<td class="header" align="left"><b>Status</b></td>
+				<td class="header" align="left"><b>Fixture</b></td>
+				<td class="header" align="left"><b>Load	Type</b></td>
+				<td class="header" align="left"><b>Fixture Watts</b></td>
+				<td class="header" align="left"><b>Fixture Qty</b></td>
+				<td class="header" align="left"><b>Total Watts</b></td>
+				<td class="header" align="left"><b>Dim</b></td>
+				<td class="header" align="left"><b>On Backup</b></td>
+				<td class="header" align="left"><b>Arc Fault</b></td>
+				<td class="header" align="left"><b>Enclosure</b></td>
+				<td class="header" align="left"><b>Slot</b></td>
+				<td class="header" align="left"><b>Module</b></td>
+				<td class="header" align="left"><b>Output</b></td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Karaoke<b> / </b>Chandelier</td>
+				<td class="ld_cell" align="left">L-088</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">3</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">1</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Karaoke<b> / </b>Down Main</td>
+				<td class="ld_cell" align="left">L-064</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">10</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">3</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Karaoke<b> / </b>Down Seating</td>
+				<td class="ld_cell" align="left">L-063</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">10</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">2</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Karaoke<b> / </b>Down Stage</td>
+				<td class="ld_cell" align="left">L-066</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">10</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">5</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Karaoke<b> / </b>L-019-1 Tapelight LED SS8</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770B</td>
+				<td class="ld_cell" align="left">5</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">8</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Karaoke<b> / </b>P.O.S. Station</td>
+				<td class="ld_cell" align="left">L-030</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">5</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">2</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Karaoke<b> / </b>Sconces</td>
+				<td class="ld_cell" align="left">L-089</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">7</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">1</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Karaoke<b> / </b>Spot Lights</td>
+				<td class="ld_cell" align="left">L-061</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">10</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">4</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Karaoke<b> / </b>Stage Accents</td>
+				<td class="ld_cell" align="left">L-060</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">7</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">4</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Karaoke<b> / </b>Stage Floor Light</td>
+				<td class="ld_cell" align="left">L-027</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">4</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">8</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Karaoke<b> / </b>Track Lights</td>
+				<td class="ld_cell" align="left">L-065</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">9</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">8</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Kitchen<b> / </b>BOH 01</td>
+				<td class="ld_cell" align="left">L-068</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">10</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">6</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Kitchen<b> / </b>BOH 02</td>
+				<td class="ld_cell" align="left">L-069</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">10</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">7</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Kitchen<b> / </b>BOH Hall 01</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770B</td>
+				<td class="ld_cell" align="left">1</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">1</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Kitchen<b> / </b>BOH Hall 02</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770B</td>
+				<td class="ld_cell" align="left">1</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">2</td>
+			</tr>
+			<table class="page"/>
+			<table class="header" width="100%"><tr><td colspan="25" rowspan="3"><img width="200" src="logogr.jpg"/></td></tr><tr/><tr/><tr class="titleblock"><td class="titletop" width="100%" colspan="25"><table class="header_title"><tr><td align="right" width="8%"><b>Report: </b></td><td width="92%">Load Schedule w/ Panel Terminations</td></tr></table></td></tr><tr class="titleblock"><td width="8%" align="right"><b>Project: </b></td><td width="32%">Major Domo 2019.12.23</td><td width="13%" align="right"><b>Dealer: </b></td><td width="47%"></td></tr><tr class="titleblock"><td align="right"><b>Creator: </b></td><td>
+                    Crestron D3 Pro v3.03.028</td><td align="right"><b>Description: </b></td><td></td></tr><tr class="titleblock"><td class="titlebottom" align="right"><b>Date: </b></td><td class="titlebottom">12/30/2019</td><td class="titlebottom" align="right"><b>System Number:</b></td><td class="titlebottom"></td></tr></table><br/><br/>
+			<table class="default" width="100%" style="border: 1pt solid black;	table-layout: fixed"/>
+			<col style="width: 1.30in"/>
+			<col style="width: 0.40in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.55in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.15in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.25in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.20in"/>
+			<col style="width: 0.35in"/>
+			<col style="width: 0.25in"/>
+			<tr class="sectionheader" valign="bottom">
+				<td class="header" align="left"><b>Area / Room / Controlled Ckt Name</b></td>
+				<td class="header" align="left"><b>Controlled Ckt No.</b></td>
+				<td class="header" align="left"><b>Status</b></td>
+				<td class="header" align="left"><b>Fixture</b></td>
+				<td class="header" align="left"><b>Load	Type</b></td>
+				<td class="header" align="left"><b>Fixture Watts</b></td>
+				<td class="header" align="left"><b>Fixture Qty</b></td>
+				<td class="header" align="left"><b>Total Watts</b></td>
+				<td class="header" align="left"><b>Dim</b></td>
+				<td class="header" align="left"><b>On Backup</b></td>
+				<td class="header" align="left"><b>Arc Fault</b></td>
+				<td class="header" align="left"><b>Enclosure</b></td>
+				<td class="header" align="left"><b>Slot</b></td>
+				<td class="header" align="left"><b>Module</b></td>
+				<td class="header" align="left"><b>Output</b></td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Kitchen<b> / </b>BOH Hall 03</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770B</td>
+				<td class="ld_cell" align="left">1</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">3</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Kitchen<b> / </b>BOH Hall 04</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770B</td>
+				<td class="ld_cell" align="left">1</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">4</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Kitchen<b> / </b>BOH Hall 05</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770B</td>
+				<td class="ld_cell" align="left">1</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">5</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Kitchen<b> / </b>BOH Hall 06</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770B</td>
+				<td class="ld_cell" align="left">1</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">6</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Kitchen<b> / </b>BOH Hall 07</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770B</td>
+				<td class="ld_cell" align="left">1</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">7</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Kitchen<b> / </b>BOH Hall 08</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">0-10V LED Driver</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770B</td>
+				<td class="ld_cell" align="left">1</td>
+				<td class="ld_cell" align="left">CLX-2DIMFLV8</td>
+				<td class="ld_cell" align="left">8</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Kitchen<b> / </b>Service Entry Light</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Downlights</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">100</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770B</td>
+				<td class="ld_cell" align="left">5</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">4</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Moon Palace<b> / </b>Bar Task Light</td>
+				<td class="ld_cell" align="left">L-034</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">5</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">6</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Moon Palace<b> / </b>Bar Top</td>
+				<td class="ld_cell" align="left">L-071</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">7</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">7</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Moon Palace<b> / </b>Bar Up Light 01</td>
+				<td class="ld_cell" align="left">L-032</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">5</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">5</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Moon Palace<b> / </b>Bar Up Lights 02</td>
+				<td class="ld_cell" align="left"></td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Accents</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">50</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">5</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">4</td>
+			</tr>
+			<tr>
+				<td class="ld_cell" align="left">Lighting<b> / </b>Moon Palace<b> / </b>Sconces</td>
+				<td class="ld_cell" align="left">L-002</td>
+				<td class="ld_cell" align="left">Unknown</td>
+				<td class="ld_cell" align="left">Pendants</td>
+				<td class="ld_cell" align="left">Incandescent</td>
+				<td class="ld_cell" align="right">170</td>
+				<td class="ld_cell" align="right">1</td>
+				<td class="ld_cell" align="right">170</td>
+				<td class="ld_cell" align="left">yes</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">no</td>
+				<td class="ld_cell" align="left">D1770A</td>
+				<td class="ld_cell" align="left">1</td>
+				<td class="ld_cell" align="left">CLX-2DIM8</td>
+				<td class="ld_cell" align="left">2</td>
+			</tr>
+		</table>
+		<div style="font-size: 9pt; text-align: right">*Calculation of load wattage includes	transformer loss.</div>
+		<div style="font-size: 9pt; text-align: right">*LP - loop number, Add - short address.</div>
+	</body>
+</html>
